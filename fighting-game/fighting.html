@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ultimate Clash</title>
+
+    <link rel="stylesheet" href="fight.css">
+
+    <!-- Three.js -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- GAME -->
+    <div id="game">
+
+        <!-- TOP HUD -->
+        <div class="hud">
+
+            <div class="fighterHUD playerHUD">
+
+                <div class="fighterName">
+                    <span>PLAYER</span>
+                    <strong>VORTEX</strong>
+                </div>
+
+                <div class="healthFrame">
+                    <div id="playerHealth"
+                         class="health playerHealth"></div>
+                </div>
+
+            </div>
+
+
+            <div class="timerBox">
+                <span id="roundText">ROUND 1</span>
+                <strong id="timer">60</strong>
+            </div>
+
+
+            <div class="fighterHUD enemyHUD">
+
+                <div class="fighterName">
+                    <span>CPU</span>
+                    <strong>TITAN</strong>
+                </div>
+
+                <div class="healthFrame">
+                    <div id="enemyHealth"
+                         class="health enemyHealth"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ROUND MESSAGE -->
+        <div id="message" class="message">
+            FIGHT!
+        </div>
+
+
+        <!-- THREE.JS -->
+        <div id="canvasContainer"></div>
+
+
+        <!-- CONTROLS -->
+        <div class="controls">
+
+            <div class="controlGroup">
+                <span class="key">A</span>
+                <span class="key">D</span>
+                <small>MOVE</small>
+            </div>
+
+            <div class="controlGroup">
+                <span class="key">W</span>
+                <small>JUMP</small>
+            </div>
+
+            <div class="controlGroup">
+                <span class="key">J</span>
+                <small>PUNCH</small>
+            </div>
+
+            <div class="controlGroup">
+                <span class="key">K</span>
+                <small>KICK</small>
+            </div>
+
+            <div class="controlGroup">
+                <span class="key">L</span>
+                <small>BLOCK</small>
+            </div>
+
+        </div>
+
+
+        <!-- GAME OVER -->
+        <div id="gameOver" class="gameOver hidden">
+
+            <div class="gameOverPanel">
+
+                <span id="winnerSmall">
+                    VICTORY
+                </span>
+
+                <h1 id="winnerText">
+                    VORTEX WINS
+                </h1>
+
+                <button id="restartButton">
+                    REMATCH
+                </button>
+
+                <button id="backButton">
+                    BACK TO CONSOLE
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="fight.js"></script>
+
+</body>
+</html>
