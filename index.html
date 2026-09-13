@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Console</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="console">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="profile">
+                <div class="avatar">G</div>
+
+                <div class="profileText">
+                    <strong>Guest Player</strong>
+                    <span>Online</span>
+                </div>
+            </div>
+
+            <div class="topActions">
+                <button id="searchBtn" title="Search">⌕</button>
+                <button id="settingsBtn" title="Settings">⚙</button>
+                <button id="fullscreenBtn" title="Fullscreen">⛶</button>
+            </div>
+
+        </header>
+
+
+        <!-- MAIN HOME -->
+        <main id="homeScreen">
+
+            <section class="welcome">
+                <p>WELCOME BACK</p>
+                <h1>Choose your game</h1>
+            </section>
+
+
+            <!-- GAME CARDS -->
+            <section class="gameArea">
+
+                <button class="gameCard active"
+                        data-game="fighter">
+
+                    <div class="gameImage fighterImage">
+
+                        <div class="fighterSilhouette left"></div>
+                        <div class="fighterSilhouette right"></div>
+
+                        <div class="gameLogo">
+                            <small>ULTIMATE</small>
+                            <strong>CLASH</strong>
+                            <span>FIGHTING ARENA</span>
+                        </div>
+
+                    </div>
+
+                    <div class="gameInfo">
+                        <strong>Ultimate Clash</strong>
+                        <span>3D Fighting Game</span>
+                    </div>
+
+                </button>
+
+
+                <button class="gameCard"
+                        data-game="racing">
+
+                    <div class="gameImage racingImage">
+
+                        <div class="speedLines"></div>
+
+                        <div class="raceLogo">
+                            <small>NEXTGEN</small>
+                            <strong>RACING</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="gameInfo">
+                        <strong>NextGen Racing</strong>
+                        <span>Coming soon</span>
+                    </div>
+
+                </button>
+
+
+                <button class="gameCard"
+                        data-game="adventure">
+
+                    <div class="gameImage adventureImage">
+
+                        <div class="mountain"></div>
+
+                        <div class="adventureLogo">
+                            <strong>LOST</strong>
+                            <span>HORIZON</span>
+                        </div>
+
+                    </div>
+
+                    <div class="gameInfo">
+                        <strong>Lost Horizon</strong>
+                        <span>Coming soon</span>
+                    </div>
+
+                </button>
+
+
+                <button class="gameCard"
+                        data-game="football">
+
+                    <div class="gameImage footballImage">
+
+                        <div class="stadiumGlow"></div>
+
+                        <div class="footballLogo">
+                            <small>ULTIMATE</small>
+                            <strong>FOOTBALL</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="gameInfo">
+                        <strong>Ultimate Football</strong>
+                        <span>Coming soon</span>
+                    </div>
+
+                </button>
+
+            </section>
+
+
+            <!-- SELECTED GAME -->
+            <section class="selectedGame">
+
+                <div class="selectedText">
+
+                    <span class="eyebrow">
+                        SELECTED GAME
+                    </span>
+
+                    <h2 id="selectedTitle">
+                        Ultimate Clash
+                    </h2>
+
+                    <p id="selectedDescription">
+                        Enter a realistic 3D fighting arena and battle
+                        your way through powerful opponents.
+                    </p>
+
+                    <div class="gameTags">
+                        <span>3D</span>
+                        <span>Fighting</span>
+                        <span>1 Player</span>
+                    </div>
+
+                    <button id="startGame" class="startButton">
+                        START GAME
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+                <div class="selectedVisual">
+
+                    <div class="circleGlow"></div>
+
+                    <div class="controller">
+                        <div class="controllerBody">
+                            <div class="stick stickLeft"></div>
+                            <div class="stick stickRight"></div>
+
+                            <div class="dpad">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="buttons">
+                                <b>△</b>
+                                <b>○</b>
+                                <b>×</b>
+                                <b>□</b>
+                            </div>
+
+                            <div class="controllerCenter">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- SEARCH PANEL -->
+        <section id="searchPanel" class="overlay hidden">
+
+            <div class="panel">
+
+                <button class="closePanel" data-close="searchPanel">×</button>
+
+                <h2>Search</h2>
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Search games..."
+                    autocomplete="off"
+                >
+
+                <div id="searchResults" class="searchResults"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SETTINGS PANEL -->
+        <section id="settingsPanel" class="overlay hidden">
+
+            <div class="panel settingsPanel">
+
+                <button class="closePanel" data-close="settingsPanel">×</button>
+
+                <h2>Settings</h2>
+
+                <div class="settingRow">
+                    <div>
+                        <strong>Interface Theme</strong>
+                        <span>Switch between console themes</span>
+                    </div>
+
+                    <button id="themeToggle" class="settingButton">
+                        DARK
+                    </button>
+                </div>
+
+                <div class="settingRow">
+                    <div>
+                        <strong>Animations</strong>
+                        <span>Enable interface animations</span>
+                    </div>
+
+                    <button id="animationToggle" class="settingButton active">
+                        ON
+                    </button>
+                </div>
+
+                <div class="settingRow">
+                    <div>
+                        <strong>Sound Effects</strong>
+                        <span>Interface sound effects</span>
+                    </div>
+
+                    <button id="soundToggle" class="settingButton active">
+                        ON
+                    </button>
+                </div>
+
+                <div class="settingRow">
+                    <div>
+                        <strong>Controls</strong>
+                        <span>Arrow keys / WASD / Enter</span>
+                    </div>
+
+                    <span class="controlHint">
+                        🎮
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILE PANEL -->
+        <section id="profilePanel" class="overlay hidden">
+
+            <div class="panel profilePanel">
+
+                <button class="closePanel" data-close="profilePanel">×</button>
+
+                <div class="largeAvatar">G</div>
+
+                <h2>Guest Player</h2>
+
+                <p class="onlineStatus">
+                    ● Online
+                </p>
+
+                <div class="profileStats">
+
+                    <div>
+                        <strong>0</strong>
+                        <span>Games Played</span>
+                    </div>
+
+                    <div>
+                        <strong>0</strong>
+                        <span>Achievements</span>
+                    </div>
+
+                    <div>
+                        <strong>0h</strong>
+                        <span>Play Time</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAME START SCREEN -->
+        <section id="gameLaunch" class="overlay hidden">
+
+            <div class="launchScreen">
+
+                <div class="launchLogo">
+                    <small>ULTIMATE</small>
+                    <strong>CLASH</strong>
+                    <span>FIGHTING ARENA</span>
+                </div>
+
+                <p>
+                    Preparing 3D Fighting Arena...
+                </p>
+
+                <div class="loadingBar">
+                    <div id="loadingProgress"></div>
+                </div>
+
+                <span id="loadingText">
+                    Loading 0%
+                </span>
+
+                <button id="cancelLaunch">
+                    CANCEL
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM BAR -->
+        <footer class="bottomBar">
+
+            <div>
+                <span>◀</span>
+                <span>Navigate</span>
+            </div>
+
+            <div>
+                <span>ENTER</span>
+                <span>Select</span>
+            </div>
+
+            <div>
+                <span>ESC</span>
+                <span>Back</span>
+            </div>
+
+            <div class="clock" id="clock">
+                00:00
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
