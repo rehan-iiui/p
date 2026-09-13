@@ -183,12 +183,24 @@ startGame.addEventListener("click", () => {
         gameCards[selectedIndex].dataset.game;
 
     if (selectedGame === "fighter") {
+
         launchFightingGame();
         return;
+
     }
 
-    showComingSoon(
-        games[selectedGame].title
+    if (selectedGame === "racing") {
+
+        window.location.href =
+            "racing-game/race.html";
+
+        return;
+
+    }
+
+    alert(
+        games[selectedGame].title +
+        " is coming soon."
     );
 
 });
