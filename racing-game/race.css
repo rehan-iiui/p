@@ -1,0 +1,423 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #02050a;
+    color: white;
+}
+
+body {
+    user-select: none;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+#game {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#game canvas {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+
+/* HUD */
+
+#hud {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    top: 25px;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    pointer-events: none;
+}
+
+.topLeft,
+.topRight {
+    display: flex;
+    gap: 15px;
+}
+
+.position,
+.lap,
+.speed,
+.nitro {
+    min-width: 90px;
+
+    padding: 10px 15px;
+
+    background: rgba(3, 8, 16, 0.75);
+
+    border: 1px solid
+        rgba(255,255,255,0.13);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 8px;
+}
+
+.position strong,
+.lap strong,
+.speed strong {
+    display: block;
+
+    font-size: 25px;
+}
+
+.position span,
+.lap span,
+.speed span,
+.nitro > span {
+    color: #8997aa;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.raceTitle {
+    text-align: center;
+
+    margin-top: 5px;
+}
+
+.raceTitle span {
+    display: block;
+
+    color: #60b8ff;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+}
+
+.raceTitle strong {
+    font-size: 17px;
+
+    letter-spacing: 3px;
+    font-style: italic;
+}
+
+
+/* NITRO */
+
+.nitro {
+    min-width: 170px;
+}
+
+.nitroBar {
+    width: 140px;
+    height: 7px;
+
+    margin-top: 7px;
+
+    background: rgba(255,255,255,0.12);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+#nitroFill {
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #158cff,
+            #72d7ff
+        );
+
+    transition: width 0.08s;
+}
+
+
+/* COUNTDOWN */
+
+#countdown {
+    position: absolute;
+
+    left: 50%;
+    top: 45%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 15;
+
+    font-size: clamp(70px, 14vw, 170px);
+
+    font-weight: 900;
+
+    font-style: italic;
+
+    text-shadow:
+        0 5px 30px #000,
+        0 0 50px rgba(40,150,255,0.6);
+
+    pointer-events: none;
+}
+
+
+/* CONTROLS */
+
+#controls {
+    position: absolute;
+
+    bottom: 22px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    display: flex;
+    gap: 10px;
+
+    padding: 10px 15px;
+
+    background: rgba(3,8,15,0.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.1);
+
+    border-radius: 10px;
+
+    backdrop-filter: blur(10px);
+
+    white-space: nowrap;
+}
+
+#controls span {
+    color: #9caabd;
+
+    font-size: 8px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+#controls b {
+    display: inline-flex;
+
+    min-width: 22px;
+    height: 22px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;
+
+    background: #202b3a;
+
+    color: white;
+
+    font-size: 9px;
+}
+
+
+/* FINISH */
+
+#finishScreen {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(0,0,0,0.72);
+
+    backdrop-filter: blur(12px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.finishPanel {
+    width: min(500px, 90%);
+
+    padding: 45px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,23,36,0.97),
+            rgba(3,7,13,0.97)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.7);
+}
+
+.finishPanel > span {
+    color: #62baff;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+.finishPanel h1 {
+    margin: 10px 0 30px;
+
+    font-size: clamp(40px, 8vw, 70px);
+
+    font-style: italic;
+}
+
+.finishStats {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 60px;
+
+    margin-bottom: 30px;
+}
+
+.finishStats strong {
+    display: block;
+
+    font-size: 25px;
+}
+
+.finishStats small {
+    color: #8290a4;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.finishPanel button {
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 8px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #168cff,
+            #0754ad
+        );
+
+    color: white;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+#back {
+    background: rgba(255,255,255,0.08);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    #hud {
+        left: 10px;
+        right: 10px;
+        top: 10px;
+    }
+
+    .raceTitle {
+        display: none;
+    }
+
+    .position,
+    .lap,
+    .speed {
+        min-width: 60px;
+        padding: 7px;
+    }
+
+    .position strong,
+    .lap strong,
+    .speed strong {
+        font-size: 19px;
+    }
+
+    .nitro {
+        min-width: 100px;
+    }
+
+    .nitroBar {
+        width: 80px;
+    }
+
+    #controls {
+        width: 96%;
+
+        justify-content: center;
+
+        gap: 4px;
+
+        overflow: hidden;
+    }
+
+    #controls span {
+        font-size: 0;
+    }
+
+    #controls b {
+        min-width: 29px;
+        height: 29px;
+    }
+}
